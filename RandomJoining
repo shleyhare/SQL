@@ -1,0 +1,40 @@
+/* Here's a table of some random singers */
+
+CREATE TABLE singers
+(id INTEGER PRIMARY KEY,
+name TEXT);
+
+INSERT INTO singers (name) VALUES ("Taylor Swift");
+INSERT INTO singers (name) VALUES ("Bruno Mars");
+INSERT INTO singers (name) VALUES ("Mac Miller");
+INSERT INTO singers (name) VALUES ("Lorde");
+
+CREATE TABLE random_songs
+(id INTEGER PRIMARY KEY,
+singer_id INTEGER,
+song_title TEXT);
+
+/* here's a table of some random songs */
+
+INSERT INTO random_songs (singer_id, song_title) VALUES (5, "Thrift Shop");
+INSERT INTO random_songs (singer_id, song_title) VALUES (2, "Treasure");
+INSERT INTO random_songs (singer_id, song_title) VALUES (4, "Green Light");
+INSERT INTO random_songs (singer_id, song_title) VALUES (4, "Royals");
+INSERT INTO random_songs (singer_id, song_title) VALUES (3, "Dang!");
+INSERT INTO random_songs (singer_id, song_title) VALUES (2, "Count on Me");
+INSERT INTO random_songs (singer_id, song_title) VALUES (1, "Our Song");
+INSERT INTO random_songs (singer_id, song_title) VALUES (6, "Seven Rings");
+INSERT INTO random_songs (singer_id, song_title) VALUES (4, "Ribs");
+INSERT INTO random_songs (singer_id, song_title) VALUES (2, "24K Magic");
+INSERT INTO random_songs (singer_id, song_title) VALUES (3, "The Spins");
+
+/* In descending order, how many random_songs have a corresponding random singer? */
+
+SELECT singers.name, count(*) as random_song_amount FROM
+    random_songs LEFT OUTER JOIN singers
+    on singers.id = random_songs.singer_id
+    group by singers.name
+    order by random_song_amount desc;
+    
+    
+    
