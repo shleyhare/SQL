@@ -1,5 +1,4 @@
-/*
- Sample of queries performed on data about countries and dependent territories, 2020
+/* Sample of queries performed on data about countries and dependent territories, 2020
  Data adapted from
  http://www.worldometers.info/world-population/population-by-country/
  Does not include rows which had "N.A." values, so some territories are missing.
@@ -223,23 +222,32 @@ INSERT INTO countries(name,population,percent_one_year_change,population_change,
 
 /* What's the average population change for the countries of the world? */ 
 
-select avg(population_change) as average_pop_change from countries;
+SELECT avg(population_change) 
+  AS average_pop_change
+FROM countries;
 
 /* Which countries have a population over 200,000,000 people? */ 
 
-select name from countries group by population having population > 200000000; 
+SELECT name
+FROM countries
+  GROUP BY population 
+    HAVING population > 200000000; 
 
 /* What are the different groups of median country age? How many countries fall into each group?*/ 
 
-select count(*) as amt_of_countries,
-case
-when median_age > 40 then 'old'
-when median_age > 30 then 'middle'
-when median_age > 20 then 'young'
-else 'very_young' 
-end as 'age_type' from countries
-group by age_type;
+SELECT count(*) as amt_of_countries,
+   CASE
+     WHEN median_age > 40 THEN 'old'
+     WHEN median_age > 30 THEN 'middle'
+     WHEN median_age > 20 THEN 'young'
+     ELSE 'very_young' 
+   END AS 'age_type' 
+FROM countries
+  GROUP BY age_type;
 
 /* What countries have a larger land area compared to a lower population density?*/ 
 
-select name from countries where area_sq_km > 1000000 AND density_per_sq_km <= 5;
+SELECT name
+FROM countries
+  WHERE area_sq_km > 1000000
+  AND density_per_sq_km <= 5;
