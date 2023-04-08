@@ -14,7 +14,7 @@ CREATE TABLE random_songs
 singer_id INTEGER,
 song_title TEXT);
 
-/* here's a table of some random songs */
+/* Here's a table of some random songs */
 
 INSERT INTO random_songs (singer_id, song_title) VALUES (5, "Thrift Shop");
 INSERT INTO random_songs (singer_id, song_title) VALUES (2, "Treasure");
@@ -30,11 +30,11 @@ INSERT INTO random_songs (singer_id, song_title) VALUES (3, "The Spins");
 
 /* In descending order, how many random_songs have a corresponding random singer? */
 
-SELECT singers.name, count(*) as random_song_amount FROM
-    random_songs LEFT OUTER JOIN singers
-    on singers.id = random_songs.singer_id
-    group by singers.name
-    order by random_song_amount desc;
+SELECT singers.name, count(*) as random_song_amount 
+FROM random_songs LEFT OUTER JOIN singers
+    ON singers.id = random_songs.singer_id
+    GROUP BY singers.name
+    ORDER BY random_song_amount DESC;
     
     
     
