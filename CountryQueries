@@ -233,7 +233,7 @@ FROM countries
   GROUP BY population 
     HAVING population > 200000000; 
 
-/* What are the different groups of median country age? How many countries fall into each group?*/ 
+/* What are the different groups of median country age? How many countries fall into each group? */ 
 
 SELECT count(*) as amt_of_countries,
    CASE
@@ -245,7 +245,7 @@ SELECT count(*) as amt_of_countries,
 FROM countries
   GROUP BY age_type;
 
-/* What countries have a larger land area compared to a lower population density?*/ 
+/* What countries have a larger land area compared to a lower population density? */ 
 
 SELECT name
 FROM countries
